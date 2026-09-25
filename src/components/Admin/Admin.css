@@ -1,0 +1,747 @@
+/* ===================================================
+   PROFESSIONAL ADMIN DASHBOARD - GLASSMORPHIC
+   =================================================== */
+
+:root {
+  /* Primary Palette - Vibrant Gradients */
+  --primary-start: #6366f1;
+  --primary-mid: #8b5cf6;
+  --primary-end: #d946ef;
+  --accent-1: #06b6d4;
+  --accent-2: #10b981;
+  
+  /* Neutral Palette */
+  --white: #ffffff;
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: rgba(30, 41, 59, 0.6);
+  --bg-card-hover: rgba(51, 65, 85, 0.8);
+  
+  /* Text Colors */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-accent: #a78bfa;
+  
+  /* Borders & Effects */
+  --border: rgba(148, 163, 184, 0.1);
+  --border-strong: rgba(148, 163, 184, 0.2);
+  --glow: rgba(99, 102, 241, 0.4);
+  
+  /* Shadows - Premium layered shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 40px rgba(99, 102, 241, 0.15);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(139, 92, 246, 0.2);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 80px rgba(217, 70, 239, 0.25);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 40px rgba(139, 92, 246, 0.4);
+  
+  /* Border Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+}
+
+/* ===========================
+   GLASSMORPHIC SIDEBAR
+=========================== */
+.admin-navbar {
+  width: 260px;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-right: 1px solid var(--glass-border);
+}
+
+.admin-navbar h3 {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 24px;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.nav-btn {
+  width: 100%;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-left: 4px solid white;
+  font-weight: 700;
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+.main-viewport {
+  margin-left: 260px;
+  flex: 1;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.admin-header {
+  background: transparent;
+  border-bottom: 1px solid var(--glass-border);
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-info h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.header-info p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.admin-badge {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* ===========================
+   CONTENT AREA
+=========================== */
+.admin-content-area,
+.users-page,
+.admin-page {
+  padding: 32px;
+  background: transparent;
+}
+
+/* ===========================
+   PAGE TITLES
+=========================== */
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+/* ===========================
+   GLASSMORPHIC CARDS
+=========================== */
+.admin-card,
+.admin-internship-card,
+.admin-app-card,
+.user-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 25px;
+  margin-bottom: 20px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.admin-internship-card:hover,
+.admin-app-card:hover,
+.user-card:hover {
+  transform: translateY(-8px);
+  background: var(--glass-bg-hover);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Titles */
+.admin-card h3,
+.admin-card h4,
+.admin-internship-card h3,
+.admin-internship-card h4,
+.admin-app-card h3,
+.admin-app-card h4,
+.user-card h3,
+.user-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+/* Card Text */
+.admin-card p,
+.admin-internship-card p,
+.admin-app-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+.admin-card p b,
+.admin-internship-card p b,
+.admin-app-card p b {
+  color: white;
+  font-weight: 600;
+}
+
+/* ===========================
+   INTERNSHIP FORM
+=========================== */
+.internship-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.internship-form h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.internship-form input,
+.internship-form textarea,
+.internship-form select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.internship-form input::placeholder,
+.internship-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.internship-form input:focus,
+.internship-form textarea:focus,
+.internship-form select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.internship-form button {
+  background: white;
+  color: #764ba2;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.internship-form button:hover {
+  background: #f0f0f0;
+  transform: scale(1.02);
+}
+
+/* ===========================
+   TAGS & BADGES
+=========================== */
+.skill-chip,
+.tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px;
+  transition: var(--transition);
+}
+
+.skill-chip:hover,
+.tag:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Role Badges */
+.role-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 12px;
+  transition: var(--transition);
+}
+
+.role-badge.admin {
+  background: var(--accent-red);
+  color: white;
+}
+
+.role-badge.student {
+  background: var(--accent-cyan);
+  color: #003333;
+}
+
+.role-badge:hover {
+  transform: translateY(-2px);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.applied {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid var(--glass-border);
+}
+
+.status-badge.accepted {
+  background: #51cf66;
+  color: #1a4d2e;
+}
+
+.status-badge.rejected {
+   background: #ef4444;   /* 🔴 red background */
+  color: #ffffff;        /* white text */
+  border: none;
+}
+
+/* ===========================
+   USER AVATAR
+=========================== */
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: white;
+  color: #764ba2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.user-card:hover .user-avatar {
+  transform: scale(1.1);
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+
+
+
+.approve,
+.reject,
+.delete-btn,
+.edit-btn,
+.action-btn {
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+}
+button.delete-btn {
+  background: transparent !important;
+  border: 2px solid #ef4444 !important;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+button.delete-btn::before {
+  display: none !important;
+}
+
+button.delete-btn:hover {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+}
+
+
+/* Hover animation */
+.approve:hover,
+.reject:hover,
+.delete-btn:hover,
+.edit-btn:hover,
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Click effect */
+.approve:active,
+.reject:active,
+.delete-btn:active,
+.edit-btn:active,
+.action-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Gradient overlay animation */
+.approve::before,
+.reject::before,
+.delete-btn::before,
+.edit-btn::before,
+.action-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: var(--transition);
+  
+}
+
+
+
+.approve:hover::before,
+.reject:hover::before,
+.delete-btn:hover::before,
+.edit-btn:hover::before,
+.action-btn:hover::before {
+  opacity: 1;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  justify-content: center; /* looks clean in cards */
+}
+
+
+.approve {
+  background: #22c55e;
+  border: 2px solid #22c55e;
+  color: #ffffff;
+
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.approve:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+
+
+
+.reject {
+  background: #ef4444;
+  border: 2px solid #ef4444;
+  color: #ffffff;
+
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.reject:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+
+.delete-btn {
+  background: transparent;
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
+}
+
+.delete-btn:hover {
+  background: var(--accent-red);
+  color: white;
+}
+
+.edit-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid var(--glass-border);
+}
+
+.edit-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===========================
+   GRIDS
+=========================== */
+.admin-internship-grid,
+.admin-grid,
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+.empty-text {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 1024px) {
+  .admin-navbar {
+    width: 220px;
+  }
+  
+  .main-viewport {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-navbar {
+    width: 70px;
+  }
+  
+  .admin-navbar h3 {
+    display: none;
+  }
+  
+  .nav-btn span {
+    display: none;
+  }
+  
+  .nav-btn {
+    justify-content: center;
+    padding: 14px;
+  }
+  
+  .main-viewport {
+    margin-left: 70px;
+  }
+  
+  .admin-header {
+    padding: 20px;
+  }
+  
+  .header-info h1 {
+    font-size: 22px;
+  }
+  
+  .admin-content-area,
+  .users-page,
+  .admin-page {
+    padding: 20px;
+  }
+  
+  .admin-internship-grid,
+  .admin-grid,
+  .users-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ===========================
+   USER EMAIL STYLING
+=========================== */
+.user-email {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 8px 0;
+}
+
+/* ===========================
+   CARD ACTIONS
+=========================== */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.card-footer {
+  display: grid;
+  grid-template-rows: auto auto; /* skills row + delete row */
+  row-gap: 14px;
+}
+
+/* Skills row */
+.student-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 88px;  
+}
+
+/* Delete button row */
+.delete-row {
+  display: flex;
+  justify-content:center; /* SAME position for all cards */
+}
+
+
+/* ===========================
+   SUBTLE ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-internship-card,
+.admin-app-card,
+.user-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.admin-internship-card:nth-child(1),
+.admin-app-card:nth-child(1),
+.user-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.admin-internship-card:nth-child(2),
+.admin-app-card:nth-child(2),
+.user-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.admin-internship-card:nth-child(3),
+.admin-app-card:nth-child(3),
+.user-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.admin-internship-card:nth-child(4),
+.admin-app-card:nth-child(4),
+.user-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
