@@ -74,16 +74,18 @@ cd Personalized_Career_Opportunity_Recommendation_Platform
 
 ### 2. Database
 
-Create a MySQL database, then edit `backend/src/main/resources/application.properties`:
+Create the MySQL database by running [`database/career_platform.sql`](database/career_platform.sql) in MySQL Workbench or the MySQL command line. The script creates the `career_platform` database, all required tables, relationships, and demo rows.
+
+Then edit `backend/src/main/resources/application.properties` and replace `YOUR_MYSQL_PASSWORD` with the password for your local MySQL `root` user:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_db
+spring.datasource.url=jdbc:mysql://localhost:3306/career_platform
 spring.datasource.username=root
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-Tables are created/updated by Hibernate on startup. Sample internships, projects, and an admin user are seeded if the tables are empty.
+The application also uses Hibernate to create or update missing tables on startup, and `DataLoader` seeds sample internships, projects, and demo accounts if they do not already exist.
 
 ### 3. Backend
 
